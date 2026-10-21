@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PlayHub Pro</title>
+    <script src="validate.js" defer></script>
+</head>
+<body>
+    <h2>Sports Registration</h2>
+
+    <form action="insert.php" method="POST"
+          onsubmit="return validateForm()">
+
+        Name: <input type="text" id="name" name="name">
+        <br><br>
+
+        Email: <input type="email" id="email" name="email">
+        <br><br>
+
+        Age: <input type="number" id="age" name="age">
+        <br><br>
+
+        Sport:
+        <select id="sport" name="sport">
+            <option value="">Select Sport</option>
+            <option value="Football">Football</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Badminton">Badminton</option>
+        </select>
+        <br><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <p><a href="display.php">View Registrations</a></p>
+</body>
+</html>
