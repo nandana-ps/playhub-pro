@@ -1,36 +1,253 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>PlayHub Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="validate.js" defer></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
+            color: #f1f5f9;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 8%;
+            border-bottom: 1px solid #252c3a;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #a3e635;
+        }
+
+        header a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            padding: 70px 8%;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .tag {
+            color: #a3e635;
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 5vw, 60px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            color: #a3e635;
+        }
+
+        .description {
+            color: #94a3b8;
+            line-height: 1.7;
+            max-width: 460px;
+        }
+
+        .sports {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .sports span {
+            padding: 10px 14px;
+            border: 1px solid #30394a;
+            border-radius: 8px;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .form-card {
+            background: #141b2a;
+            border: 1px solid #293346;
+            border-radius: 18px;
+            padding: 32px;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .form-card h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .form-card p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 18px;
+            background: #0b1220;
+            border: 1px solid #354157;
+            border-radius: 8px;
+            color: #f1f5f9;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #a3e635;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #a3e635;
+            color: #101609;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #bef264;
+        }
+
+        .view-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #a3e635;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid #252c3a;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 20px 6%;
+            }
+
+            .hero {
+                padding: 45px 6%;
+            }
+
+            .form-card {
+                padding: 24px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Sports Registration</h2>
+    <header>
+        <div class="logo">PLAYHUB PRO.</div>
+        <a href="login.php">Admin Login ↗</a>
+    </header>
 
-    <form action="insert.php" method="POST"
-          onsubmit="return validateForm()">
+    <main class="hero">
+        <section class="hero-text">
+            <p class="tag">YOUR GAME. YOUR COMMUNITY.</p>
 
-        Name: <input type="text" id="name" name="name">
-        <br><br>
+            <h1>Find your game.<br>
+                <span>Own the moment.</span>
+            </h1>
 
-        Email: <input type="email" id="email" name="email">
-        <br><br>
+            <p class="description">
+                Join the action, register for your favourite sport,
+                and become part of the PlayHub community.
+                Your next game starts here.
+            </p>
 
-        Age: <input type="number" id="age" name="age">
-        <br><br>
+            <div class="sports">
+                <span>⚽ Football</span>
+                <span>🏏 Cricket</span>
+                <span>🏸 Badminton</span>
+            </div>
+        </section>
 
-        Sport:
-        <select id="sport" name="sport">
-            <option value="">Select Sport</option>
-            <option value="Football">Football</option>
-            <option value="Cricket">Cricket</option>
-            <option value="Badminton">Badminton</option>
-        </select>
-        <br><br>
+        <section class="form-card">
+            <h2>Join PlayHub</h2>
+            <p>Enter your details to register.</p>
 
-        <input type="submit" value="Register">
-    </form>
+            <form action="insert.php" method="POST"
+                  onsubmit="return validateForm()">
 
-    <p><a href="display.php">View Registrations</a></p>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Enter your name">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email"
+                       placeholder="you@example.com">
+
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age"
+                       placeholder="Enter your age">
+
+                <label for="sport">Choose Your Sport</label>
+                <select id="sport" name="sport">
+                    <option value="">Select a sport</option>
+                    <option value="Football">Football</option>
+                    <option value="Cricket">Cricket</option>
+                    <option value="Badminton">Badminton</option>
+                </select>
+
+                <button type="submit">Register Now ↗</button>
+            </form>
+
+            <a class="view-link" href="display.php">
+                View Registrations →
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 PlayHub Pro. Built for the love of sport.
+    </footer>
 </body>
 </html>
